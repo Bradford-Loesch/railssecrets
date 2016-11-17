@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Register User</title>
+  </head>
+  <body>
+    <% if flash[:notice].kind_of?(Array) %>
+      <% flash[:notice].each do |message|%>
+        <h4><%=message%></h4>
+      <% end %>
+    <% end %>
+    <% if flash[:notice].kind_of?(String) %>
+      <h4><%=flash[:notice]%></h4>
+    <% end %>
+    <form class="newuser" action="/users" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+      <label for="user[name]">Name: <input type="text" name="user[name]" value=""></label><br>
+      <label for="user[email]">Email: <input type="text" name="user[email]" value=""></label><br>
+      <label for="user[password]">Password: <input type="text" name="user[password]" value=""></label><br>
+      <label for="user[password_confirmation]">Password Confirmation: <input type="text" name="user[password_confirmation]" value=""></label><br>
+      <input type="submit" name="submit" value="Register">
+    </form>
+  </body>
+</html>

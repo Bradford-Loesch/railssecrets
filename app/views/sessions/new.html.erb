@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User Login</title>
+  </head>
+  <body>
+    <% if flash[:notice].kind_of?(Array) %>
+      <% flash[:notice].each do |message|%>
+        <h4><%=message%></h4>
+      <% end %>
+    <% end %>
+    <% if flash[:notice].kind_of?(String) %>
+      <h4><%=flash[:notice]%></h4>
+    <% end %>
+    <form class="newuser" action="/sessions/create" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+      <label for="email">Email: <input type="text" name="email" value=""></label><br>
+      <label for="password">Password: <input type="text" name="password" value=""></label><br>
+      <input type="submit" name="submit" value="Log In">
+    </form>
+  </body>
+</html>
